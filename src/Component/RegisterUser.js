@@ -1219,7 +1219,7 @@ function RegisterUser() {
     })
       .then((res) => setIdClient(res.json().id))
       .catch((err) => console.log("error"));
-    alert("Form Submitted" + name + email + " foi ");
+    alert("Fqorm Submitted" + name + email + " foi ");
   };
   const mystyle = {
     alignItems: "center",
