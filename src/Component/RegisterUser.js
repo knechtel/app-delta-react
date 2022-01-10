@@ -1222,8 +1222,37 @@ function RegisterUser() {
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
-    console.log(name + "send  maiquel  postId  -------->" + postId);
-    alert("-> send " + id + " foi ");
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
+    };
+    try {
+      const response = await fetch(`http://localhost:8080/create-equipment`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          brand: marca,
+          model: modelo,
+          serial: serial,
+          idClient: postId,
+          defectForRepair: defeito,
+        }),
+      });
+
+      const json = await response.json();
+      console.log("aqui");
+      console.log(json.id);
+      setPostId(json.id);
+
+      id = json.id;
+    } catch (err) {
+      throw err;
+      console.log(err);
+    }
   }
   const mystyle = {
     alignItems: "center",
