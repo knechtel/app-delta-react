@@ -11,12 +11,12 @@ import {
   Route,
   Link,
 } from "react-router-dom";
-import RegisterUser from "./Component/RegisterUser";
+import RegisterOs from "./Component/RegisterOs";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/create-os" element={<RegisterUser />} />
+        <Route path="/create-os" element={<RegisterOs />} />
         <Route path="/" element={<App />} />
       </Routes>
     </BrowserRouter>
