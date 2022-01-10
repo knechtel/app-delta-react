@@ -1217,26 +1217,14 @@ function RegisterUser() {
   async function submitHandler(e) {
     e.preventDefault();
     await fetchFunction();
+    setPostId(id);
     console.log(name + "aqui maiquel -------->" + id);
   }
-  const submitHandlerEquipment = (e) => {
+  async function submitHandlerEquipment(e) {
     e.preventDefault();
-
-    fetch("http://localhost:8080/client-create", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        cpf: cpf,
-      }),
-    })
-      .then((res) => setIdClient(res.json().id))
-      .catch((err) => console.log("error"));
-    alert("Fqorm Submitted" + name + email + " foi ");
-  };
+    console.log(name + "send  maiquel  postId  -------->" + postId);
+    alert("-> send " + id + " foi ");
+  }
   const mystyle = {
     alignItems: "center",
     justifyContent: "center",
@@ -1332,7 +1320,7 @@ function RegisterUser() {
               <td>
                 <input
                   type="text"
-                  value={serial}
+                  value={defeito}
                   onChange={(e) => setDefeito(e.target.value)}
                 />
               </td>
