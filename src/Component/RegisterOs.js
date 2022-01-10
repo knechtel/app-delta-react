@@ -10,8 +10,7 @@ import DataGrid, {
   Selection,
 } from "devextreme-react/data-grid";
 
-
-function RegisterUser() {
+function RegisterOs() {
   const sales = [
     {
       orderId: 10248,
@@ -1247,6 +1246,7 @@ function RegisterUser() {
       console.log("aqui");
       console.log(json.id);
       setPostId(json.id);
+      setMarca("");
 
       id = json.id;
     } catch (err) {
@@ -1405,4 +1405,4 @@ function RegisterUser() {
     </>
   );
 }
-export default RegisterUser;
+export default RegisterOs;
