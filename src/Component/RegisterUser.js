@@ -9,6 +9,8 @@ import DataGrid, {
   Paging,
   Selection,
 } from "devextreme-react/data-grid";
+
+
 function RegisterUser() {
   const sales = [
     {
@@ -1179,30 +1181,44 @@ function RegisterUser() {
   const [serial, setSerial] = useState("");
   const [defeito, setDefeito] = useState("");
   const [idClient, setIdClient] = useState("");
+  const [postId, setPostId] = useState(2);
   var id = 0;
-  const submitHandler = (e) => {
-    e.preventDefault();
 
-    fetch("http://localhost:8080/client-create", {
+  async function fetchFunction() {
+    const requestOptions = {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        cpf: cpf,
-      }),
-    })
-      .then((response) => response.json())
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
+    };
+    try {
+      const response = await fetch(`http://localhost:8080/client-create`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          cpf: cpf,
+        }),
+      });
 
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => console.log("error"));
-    alert("Form Submitted" + name + email + " foi " + id + "id ");
-    console.log("esse é o id ? " + id);
-  };
+      const json = await response.json();
+      console.log("aqui");
+      console.log(json.id);
+      setPostId(json.id);
+
+      id = json.id;
+    } catch (err) {
+      throw err;
+      console.log(err);
+    }
+  }
+  async function submitHandler(e) {
+    e.preventDefault();
+    await fetchFunction();
+    console.log(name + "aqui maiquel -------->" + id);
+  }
   const submitHandlerEquipment = (e) => {
     e.preventDefault();
 
