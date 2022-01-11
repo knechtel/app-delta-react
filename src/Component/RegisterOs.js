@@ -76,7 +76,6 @@ function RegisterOs() {
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
-    console.log(name + "aqui maiquel -------->" + id);
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
