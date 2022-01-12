@@ -1,4 +1,4 @@
-export const sales = [
+export var sales = [
   {
     orderId: 10248,
     region: "North America",
