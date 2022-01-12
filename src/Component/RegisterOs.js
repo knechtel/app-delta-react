@@ -1,15 +1,6 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect } from "react";
 import { sales } from "./sales.js";
-import DataGrid, {
-  Column,
-  FilterRow,
-  Grouping,
-  GroupPanel,
-  Pager,
-  Paging,
-  Selection,
-} from "devextreme-react/data-grid";
 import DataTable from "./DataTable";
 
 function RegisterOs() {
@@ -21,8 +12,10 @@ function RegisterOs() {
   const [modelo, setModelo] = useState("");
   const [serial, setSerial] = useState("");
   const [defeito, setDefeito] = useState("");
-  var [obj, setObj] = useState("");
+
+  var [listEquipment, setListEquipement] = useState("");
   const [postId, setPostId] = useState(2);
+
   var id = 0;
 
   async function fetchFunction() {
@@ -56,7 +49,6 @@ function RegisterOs() {
     }
   }
   useEffect(() => {
-    setObj();
     return function () {
       //code to be run during unmount phase
     };
@@ -65,7 +57,7 @@ function RegisterOs() {
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
-    setObj(sales);
+    setListEquipement(sales);
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
@@ -210,7 +202,7 @@ function RegisterOs() {
           </table>
         </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable test={obj} />
+        <DataTable test={listEquipment} />
       </div>
     </>
   );

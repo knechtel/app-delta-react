@@ -1,10 +1,7 @@
-import React, { useState, useEffect } from "react";
-import { sales } from "./sales";
 import DataGrid, {
   Column,
   FilterRow,
   Grouping,
-  GroupPanel,
   Pager,
   Paging,
   Selection,
