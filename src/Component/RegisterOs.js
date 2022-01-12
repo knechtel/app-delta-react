@@ -81,13 +81,9 @@ function RegisterOs() {
           defectForRepair: defeito,
         }),
       });
-
       const json = await response.json();
-      console.log("aqui");
-      console.log(json.id);
       setPostId(json.id);
       setMarca("");
-
       id = json.id;
     } catch (err) {
       throw err;
