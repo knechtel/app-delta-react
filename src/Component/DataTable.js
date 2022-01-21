@@ -24,7 +24,7 @@ function DataTable({ test }) {
     <div>
       <DataGrid
         dataSource={test}
-        keyExpr={"orderId"}
+        keyExpr={"idClient"}
         allowColumnReordering={true}
         defaultSelectedRowKeys={selectedKeys}
       >
@@ -33,31 +33,18 @@ function DataTable({ test }) {
         <Selection mode={"multiple"} />
 
         <Column
-          dataField={"orderId"}
-          caption={"Order ID"}
+          dataField={"idClient"}
+          caption={"Client ID"}
           allowSorting={false}
           allowFiltering={false}
           allowGrouping={false}
           allowReordering={false}
           width={100}
         />
-        <Column dataField={"city"} />
-        <Column dataField={"country"} sortOrder={"asc"} />
+        <Column dataField={"model"} />
+        <Column dataField={"serial"} sortOrder={"asc"} />
 
-        <Column
-          dataField={"date"}
-          dataType={"date"}
-          selectedFilterOperation={">="}
-          filterValue={"2013/04/01"}
-          width={150}
-        />
-        <Column
-          dataField={"amount"}
-          format={"currency"}
-          selectedFilterOperation={">="}
-          filterValue={1000}
-          width={100}
-        />
+        <Column dataField={"marca"} />
 
         <Pager allowedPageSizes={[5, 10, 20]} showPageSizeSelector={true} />
         <Paging defaultPageSize={10} />

@@ -915,19 +915,17 @@ export var sales = [
 
 export var sales_listEquipment = [
   {
-    orderId: 10248,
-    region: "North America",
-    country: "United States",
-    city: "New York",
-    amount: 1740,
-    date: "2013/01/06",
+    idClient: 10248,
+    marca: "Samsung",
+    modelo: "m215",
+    serial: "2o2o2o2",
+    defectForRepair: "nao liga",
   },
   {
-    orderId: 10249,
-    region: "North America",
-    country: "United States",
-    city: "Los Angeles",
-    amount: 850,
-    date: "2013/01/13",
+    idClient: 10249,
+    marca: "Apple",
+    modelo: "10XI",
+    serial: "model 2",
+    defectForRepair: "nao liga",
   },
 ];
