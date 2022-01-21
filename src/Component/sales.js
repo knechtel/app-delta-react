@@ -912,3 +912,22 @@ export var sales = [
     date: "2013/05/03",
   },
 ];
+
+export var sales_listEquipment = [
+  {
+    orderId: 10248,
+    region: "North America",
+    country: "United States",
+    city: "New York",
+    amount: 1740,
+    date: "2013/01/06",
+  },
+  {
+    orderId: 10249,
+    region: "North America",
+    country: "United States",
+    city: "Los Angeles",
+    amount: 850,
+    date: "2013/01/13",
+  },
+];

@@ -1,6 +1,7 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect } from "react";
 import { sales } from "./sales.js";
+import { sales_listEquipment } from "./sales.js";
 import DataTable from "./DataTable";
 
 function RegisterOs() {
@@ -57,7 +58,9 @@ function RegisterOs() {
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
-    setListEquipement(sales);
+    setListEquipement(sales_listEquipment);
+
+    // data para aparecer isso 1/1/2013
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
