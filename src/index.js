@@ -2,18 +2,14 @@ import React, { createContext } from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import { sales_listEquipment } from "./Component/sales";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterOs from "./Component/RegisterOs";
 export const TreesContext = createContext({});
 ReactDOM.render(
-  <TreesContext.Provider value={{ sales_listEquipment }}>
+  <TreesContext.Provider>
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/create-os"
-          element={<RegisterOs value={{ sales_listEquipment }} />}
-        />
+        <Route path="/create-os" element={<RegisterOs />} />
         <Route path="/" element={<App />} />
       </Routes>
     </BrowserRouter>

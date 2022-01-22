@@ -2,7 +2,7 @@ import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
 import DataTable from "./DataTable";
 
-const RegisterOs = (list) => {
+const RegisterOs = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
