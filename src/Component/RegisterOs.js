@@ -210,7 +210,7 @@ const RegisterOs = () => {
           </table>
         </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable test={[...newList]} />
+        <DataTable listAparelho={[...newList]} />
       </div>
     </>
   );

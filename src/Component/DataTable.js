@@ -8,11 +8,11 @@ import DataGrid, {
   Editing,
 } from "devextreme-react/data-grid";
 
-function DataTable({ test }) {
+function DataTable({ listAparelho }) {
   return (
     <div>
       <DataGrid
-        dataSource={test}
+        dataSource={listAparelho}
         keyExpr={"idClient"}
         allowColumnReordering={true}
       >
