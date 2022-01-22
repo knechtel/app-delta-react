@@ -28,10 +28,8 @@ const RegisterOs = (list) => {
   var [listEquipment, setListEquipement] = useReducer(
     (listEquipment, newList) => {
       listEquipment = newList;
-      console.log("new list" + newList);
-      console.log("item serial" + newList[0].serial);
       setNewList(newList);
-      return [...newList];
+      return newList;
     }
   );
   const [postId, setPostId] = useState(2);
@@ -114,7 +112,7 @@ const RegisterOs = (list) => {
         idClient: postId,
         defectForRepair: defeito,
       };
-      listEquipment = sales_listEquipment;
+      if (listEquipment == null) listEquipment = new Array();
       listEquipment.push(apaerelho1);
       setListEquipement(listEquipment);
       setMarca("");
