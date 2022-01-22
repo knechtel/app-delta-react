@@ -3,13 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { sales_listEquipment } from "./Component/sales";
-import {
-  BrowserRouter as BrowserRouter,
-  Router,
-  Routes,
-  Route,
-  Link,
-} from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterOs from "./Component/RegisterOs";
 export const TreesContext = createContext({});
 ReactDOM.render(
