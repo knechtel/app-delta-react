@@ -1,7 +1,5 @@
 import NavBar from "./NavBar";
-import React, { useState, useEffect, useContext, useReducer } from "react";
-
-
+import React, { useState, useEffect, useReducer } from "react";
 import DataTable from "./DataTable";
 
 const RegisterOs = (list) => {
