@@ -1,9 +1,9 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect, useContext, useReducer } from "react";
-import { sales } from "./sales.js";
-import { sales_listEquipment } from "./sales.js";
+
+
 import DataTable from "./DataTable";
-import { TreesContext } from "../index";
+
 const RegisterOs = (list) => {
   useEffect(() => {
     // setListEquipement(sales_listEquipment);
@@ -75,9 +75,6 @@ const RegisterOs = (list) => {
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
-    // setListEquipement(sales_listEquipment);
-
-    // data para aparecer isso 1/1/2013
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
@@ -101,7 +98,6 @@ const RegisterOs = (list) => {
           defectForRepair: defeito,
         }),
       });
-      // eslint-disable-next-line no-unused-vars
 
       const json = await response.json();
 
