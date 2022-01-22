@@ -5,15 +5,6 @@ import React, { useState, useEffect, useContext, useReducer } from "react";
 import DataTable from "./DataTable";
 
 const RegisterOs = (list) => {
-  useEffect(() => {
-    // setListEquipement(sales_listEquipment);
-    console.log("maiuel");
-
-    return function () {
-      //code to be run during unmount phase
-    };
-  }, []);
-
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -23,7 +14,6 @@ const RegisterOs = (list) => {
   var [serial, setSerial] = useState("");
   var [defeito, setDefeito] = useState("");
   const [newList, setNewList] = useState([]);
-  //var [listEquipment, setListEquipement] = useState(sales_listEquipment);
 
   var [listEquipment, setListEquipement] = useReducer(
     (listEquipment, newList) => {
@@ -41,11 +31,6 @@ const RegisterOs = (list) => {
   var id = 0;
 
   async function fetchFunction() {
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
-    };
     try {
       const response = await fetch(`http://localhost:8080/client-create`, {
         method: "POST",
@@ -79,11 +64,6 @@ const RegisterOs = (list) => {
   async function submitHandlerEquipment(e) {
     e.preventDefault();
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title: "React Hooks POST Request Example" }),
-    };
     try {
       const response = await fetch(`http://localhost:8080/create-equipment`, {
         method: "POST",
