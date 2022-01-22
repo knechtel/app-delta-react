@@ -7,7 +7,6 @@ import {
   BrowserRouter as BrowserRouter,
   Router,
   Routes,
-  Switch,
   Route,
   Link,
 } from "react-router-dom";
