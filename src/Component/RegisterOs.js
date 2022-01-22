@@ -1,21 +1,44 @@
 import NavBar from "./NavBar";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import { sales } from "./sales.js";
 import { sales_listEquipment } from "./sales.js";
 import DataTable from "./DataTable";
+import { TreesContext } from "../index";
+const RegisterOs = (list) => {
+  useEffect(() => {
+    // setListEquipement(sales_listEquipment);
+    console.log("maiuel");
 
-function RegisterOs() {
+    return function () {
+      //code to be run during unmount phase
+    };
+  }, []);
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
 
-  const [marca, setMarca] = useState("");
-  const [modelo, setModelo] = useState("");
-  const [serial, setSerial] = useState("");
-  const [defeito, setDefeito] = useState("");
+  var [marca, setMarca] = useState("");
+  var [modelo, setModelo] = useState("");
+  var [serial, setSerial] = useState("");
+  var [defeito, setDefeito] = useState("");
+  const [newList, setNewList] = useState([]);
+  //var [listEquipment, setListEquipement] = useState(sales_listEquipment);
 
-  var [listEquipment, setListEquipement] = useState("");
+  var [listEquipment, setListEquipement] = useReducer(
+    (listEquipment, newList) => {
+      listEquipment = newList;
+      console.log("new list" + newList);
+      console.log("item serial" + newList[0].serial);
+      setNewList(newList);
+      return [...newList];
+    }
+  );
   const [postId, setPostId] = useState(2);
+
+  useEffect(() => {
+    console.log("mudou");
+  }, [listEquipment]);
 
   var id = 0;
 
@@ -49,16 +72,12 @@ function RegisterOs() {
       console.log(err);
     }
   }
-  useEffect(() => {
-    return function () {
-      //code to be run during unmount phase
-    };
-  }, []);
+
   async function submitHandler(e) {
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
-    setListEquipement(sales_listEquipment);
+    // setListEquipement(sales_listEquipment);
 
     // data para aparecer isso 1/1/2013
   }
@@ -84,9 +103,27 @@ function RegisterOs() {
           defectForRepair: defeito,
         }),
       });
+      // eslint-disable-next-line no-unused-vars
+
       const json = await response.json();
-      setPostId(json.id);
+
+      var apaerelho1 = {
+        marca: marca,
+        model: modelo,
+        serial: serial,
+        idClient: postId,
+        defectForRepair: defeito,
+      };
+      listEquipment = sales_listEquipment;
+      listEquipment.push(apaerelho1);
+      setListEquipement(listEquipment);
       setMarca("");
+      setModelo("");
+      setSerial("");
+      setDefeito("");
+
+      console.log(listEquipment);
+      console.log("id " + postId);
       id = json.id;
     } catch (err) {
       throw err;
@@ -201,9 +238,9 @@ function RegisterOs() {
           </table>
         </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable test={listEquipment} />
+        <DataTable test={[...newList]} />
       </div>
     </>
   );
-}
+};
 export default RegisterOs;
