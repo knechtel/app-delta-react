@@ -5,6 +5,7 @@ import DataGrid, {
   Pager,
   Paging,
   Selection,
+  Editing,
 } from "devextreme-react/data-grid";
 
 function DataTable({ test }) {
@@ -31,7 +32,12 @@ function DataTable({ test }) {
         <Grouping autoExpandAll={true} border="1" />
         <FilterRow visible={true} />
         <Selection mode={"multiple"} />
-
+        <Editing
+          mode="row"
+          allowUpdating={true}
+          allowDeleting={true}
+          allowAdding={true}
+        />
         <Column
           dataField={"idClient"}
           caption={"Client ID"}
