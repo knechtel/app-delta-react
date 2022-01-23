@@ -8,7 +8,20 @@ import DataGrid, {
   Editing,
 } from "devextreme-react/data-grid";
 import React from "react";
+
+function renderGridCell(data) {
+  return (
+    <a href={"http://google.com.br"} target="_blank" rel="noopener noreferrer">
+      Website
+    </a>
+  );
+}
 function Tabela({ list }) {
+  for (let key in list) {
+    var name = list[key].name;
+
+    console.log(name);
+  }
   return (
     <div>
       <DataGrid dataSource={list} keyExpr={"id"} allowColumnReordering={true}>
@@ -28,6 +41,13 @@ function Tabela({ list }) {
         />
         <Column dataField={"name"} />
         <Column dataField={"email"} />
+        <Column
+          dataField={"Website"}
+          caption=""
+          alignment="center"
+          width={100}
+          cellRender={renderGridCell}
+        />
 
         <Column dataField={"cpf"} />
 
