@@ -9,53 +9,46 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import React from "react";
 
-function renderGridCell(data) {
-  return (
-    <a href={"http://google.com.br"} target="_blank" rel="noopener noreferrer">
-      Website
-    </a>
-  );
-}
-function Tabela({ list }) {
-  for (let key in list) {
-    var name = list[key].name;
+ const renderGridCell = (data) => {
+   var b = "https://www.google.com/search?q=sun";
+   return (
+     <a href={b} target="_blank" rel="noopener noreferrer">
+       Website
+     </a>
+   );
+ };
+ function Tabela({ list }) {
+   for (let key in list) {
+     var name = list[key].name;
 
-    console.log(name);
-  }
-  return (
-    <div>
-      <DataGrid dataSource={list} keyExpr={"id"} allowColumnReordering={true}>
-        <Grouping autoExpandAll={true} border="1" />
-        <FilterRow visible={true} />
-        <Selection mode={"multiple"} />
-        <Editing mode="row" allowUpdating={true} allowDeleting={true} />
-        <Column dataField="id" allowEditing={false}></Column>
-        <Column
-          dataField={"idClient"}
-          caption={"Client ID"}
-          allowSorting={false}
-          allowFiltering={false}
-          allowGrouping={false}
-          allowReordering={false}
-          width={100}
-        />
-        <Column dataField={"name"} />
-        <Column dataField={"email"} />
-        <Column
-          dataField={"Website"}
-          caption=""
-          alignment="center"
-          width={100}
-          cellRender={renderGridCell}
-        />
+     console.log(name);
+   }
+   return (
+     <div>
+       <DataGrid dataSource={list} keyExpr={"id"} allowColumnReordering={true}>
+         <Grouping autoExpandAll={true} border="1" />
+         <FilterRow visible={true} />
+         <Selection mode={"multiple"} />
+         <Editing mode="row" allowUpdating={true} allowDeleting={true} />
+         <Column dataField="id" allowEditing={false}></Column>
 
-        <Column dataField={"cpf"} />
+         <Column dataField={"name"} />
+         <Column dataField={"email"} />
+         <Column
+           dataField={"Website"}
+           allowEditing={false}
+           alignment="center"
+           width={100}
+           cellRender={renderGridCell}
+         />
 
-        <Pager allowedPageSizes={[5, 10, 20]} showPageSizeSelector={true} />
-        <Paging defaultPageSize={10} />
-      </DataGrid>
-    </div>
-  );
-}
+         <Column dataField={"cpf"} />
+
+         <Pager allowedPageSizes={[5, 10, 20]} showPageSizeSelector={true} />
+         <Paging defaultPageSize={10} />
+       </DataGrid>
+     </div>
+   );
+ }
 
 export default Tabela;
