@@ -1,8 +1,11 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
 import DataTable from "./DataTable";
-
+import Alert from "react-bootstrap/Alert";
+import AlertDismissibleExample from "./AlertDismissibleExample";
 const RegisterOs = () => {
+  const [mostra, setMostra] = useState(false);
+  const [showAparelho, setShowAparelho] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -54,10 +57,14 @@ const RegisterOs = () => {
     }
   }
 
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   async function submitHandler(e) {
+    setMostra(true);
     e.preventDefault();
     await fetchFunction();
     setPostId(id);
+    await delay(2000);
+    setMostra(false);
   }
   async function submitHandlerEquipment(e) {
     e.preventDefault();
@@ -91,6 +98,7 @@ const RegisterOs = () => {
       if (listEquipment == null) listEquipment = new Array();
       listEquipment.push(apaerelho1);
       setListEquipement(listEquipment);
+      setShowAparelho(true);
       setMarca("");
       setModelo("");
       setSerial("");
@@ -103,6 +111,8 @@ const RegisterOs = () => {
       throw err;
       console.log(err);
     }
+    await delay(1000);
+    setShowAparelho(false);
   }
   const mystyle = {
     alignItems: "center",
@@ -122,6 +132,18 @@ const RegisterOs = () => {
   return (
     <>
       <NavBar />
+      <div>
+        {mostra && (
+          <p className="alert alert-success visible" data-fragment-index="0">
+            Cliente cadastrado com sucesso!
+          </p>
+        )}
+        {showAparelho && (
+          <p className="alert alert-success visible" data-fragment-index="0">
+            Aparelho cadastrado com sucesso!
+          </p>
+        )}
+      </div>
       <h1 style={styleH1}>Cadastro de cliente</h1>
       <div>
         <form onSubmit={submitHandler}>
@@ -162,6 +184,7 @@ const RegisterOs = () => {
             </tr>
           </table>
         </form>
+        <div></div>
         <form onSubmit={submitHandlerEquipment}>
           <h2 style={styleH1}>Aparelho </h2>
           <table style={mystyle}>
