@@ -1,8 +1,7 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
 import DataTable from "./DataTable";
-import Alert from "react-bootstrap/Alert";
-import AlertDismissibleExample from "./AlertDismissibleExample";
+
 const RegisterOs = () => {
   const [mostra, setMostra] = useState(false);
   const [showAparelho, setShowAparelho] = useState(false);
