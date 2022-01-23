@@ -10,17 +10,18 @@ import DataGrid, {
 import React from "react";
 
  const renderGridCell = (data) => {
+   console.log(data);
    var b = "https://www.google.com/search?q=sun";
    return (
-     <a href={b} target="_blank" rel="noopener noreferrer">
-       Website
+     <a href={data.text} target="_blank" rel="noopener noreferrer">
+       {data.text}
      </a>
    );
  };
  function Tabela({ list }) {
    for (let key in list) {
      var name = list[key].name;
-
+     list[key].website = name;
      console.log(name);
    }
    return (
@@ -35,7 +36,7 @@ import React from "react";
          <Column dataField={"name"} />
          <Column dataField={"email"} />
          <Column
-           dataField={"Website"}
+           dataField={"website"}
            allowEditing={false}
            alignment="center"
            width={100}
