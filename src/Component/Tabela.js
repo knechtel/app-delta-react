@@ -31,7 +31,6 @@ import React from "react";
          <FilterRow visible={true} />
          <Selection mode={"multiple"} />
          <Editing mode="row" allowUpdating={true} allowDeleting={true} />
-         <Column dataField="id" allowEditing={false}></Column>
 
          <Column dataField={"name"} />
          <Column dataField={"email"} />
@@ -39,7 +38,6 @@ import React from "react";
            dataField={"website"}
            allowEditing={false}
            alignment="center"
-           width={100}
            cellRender={renderGridCell}
          />
 
