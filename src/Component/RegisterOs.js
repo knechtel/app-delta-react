@@ -69,6 +69,7 @@ const RegisterOs = () => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          id: id,
           brand: marca,
           model: modelo,
           serial: serial,
@@ -80,6 +81,7 @@ const RegisterOs = () => {
       const json = await response.json();
 
       var apaerelho1 = {
+        id: json.id,
         marca: marca,
         model: modelo,
         serial: serial,
