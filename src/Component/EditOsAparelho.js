@@ -2,6 +2,7 @@ import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
 import DataTable from "./DataTable";
 import { useParams } from "react-router-dom";
+import DataTableEdit from "./DataTableEdit";
 
 const EditOsAparelho = () => {
   const [client, setClient] = useState([]);
@@ -32,8 +33,7 @@ const EditOsAparelho = () => {
       });
 
       const json = await response.json();
-      console.log("aqui");
-      console.log(json);
+
       setName(json.name);
       setEmail(json.email);
       setCpf(json.cpf);
@@ -46,9 +46,37 @@ const EditOsAparelho = () => {
     setName(client.name);
   };
 
+  const findClientByEquipment = async (id) => {
+    try {
+      const response = await fetch(
+        `http://localhost:8080/client-findByAllEquipment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: id,
+          }),
+        }
+      );
+
+      const json = await response.json();
+      console.log("findByAllEquipment");
+      console.log(json.listEquipment);
+      setNewList(json.listEquipment);
+    } catch (err) {
+      throw err;
+      console.log(err);
+    }
+
+    setName(client.name);
+  };
+
   useEffect(() => {
     console.log("chama");
     findByIdClient(params.id);
+    findClientByEquipment(params.id);
     console.log(params.id);
   }, [params.id]);
   var [listEquipment, setListEquipement] = useReducer(
@@ -187,6 +215,7 @@ const EditOsAparelho = () => {
               <td>Nome</td>
               <td>
                 <input
+                  disabled="disabled"
                   type="text"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
@@ -197,6 +226,7 @@ const EditOsAparelho = () => {
               <td>Email</td>
               <td>
                 <input
+                  disabled="disabled"
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
@@ -207,70 +237,19 @@ const EditOsAparelho = () => {
               <td>Cpf</td>
               <td>
                 <input
+                  disabled="disabled"
                   type="text"
                   value={cpf}
                   onChange={(e) => setCpf(e.target.value)}
                 />
               </td>
             </tr>
-
-            <tr>
-              <button>Enviar</button>
-            </tr>
           </table>
         </form>
         <div></div>
-        <form onSubmit={submitHandlerEquipment}>
-          <h2 style={styleH1}>Aparelho </h2>
-          <table style={mystyle}>
-            <tr>
-              <td>Marca</td>
-              <td>
-                <input
-                  type="text"
-                  value={marca}
-                  onChange={(e) => setMarca(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Modelo</td>
-              <td>
-                <input
-                  type="text"
-                  value={modelo}
-                  onChange={(e) => setModelo(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Serial</td>
-              <td>
-                <input
-                  type="text"
-                  value={serial}
-                  onChange={(e) => setSerial(e.target.value)}
-                />
-              </td>
-            </tr>
-            <tr>
-              <td>Defeito</td>
-              <td>
-                <input
-                  type="text"
-                  value={defeito}
-                  onChange={(e) => setDefeito(e.target.value)}
-                />
-              </td>
-            </tr>
 
-            <tr>
-              <button>Enviar</button>
-            </tr>
-          </table>
-        </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable listAparelho={[...newList]} />
+        <DataTableEdit listAparelho={[...newList]} />
       </div>
     </>
   );

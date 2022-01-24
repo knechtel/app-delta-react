@@ -8,14 +8,14 @@ import DataGrid, {
   Editing,
 } from "devextreme-react/data-grid";
 import React from "react";
-function DataTable({ listAparelho }) {
+function DataTableEdit({ listAparelho }) {
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
     if (string != "[]") {
       var key = null;
       var model = null;
       var serial = null;
-      var marca = null;
+      var brand = null;
       var obj = eval(string);
       if (string.includes("model")) {
         model = obj[0].data.model;
@@ -25,8 +25,8 @@ function DataTable({ listAparelho }) {
         serial = obj[0].data.serial;
         key = obj[0].key;
       }
-      if (string.includes("marca")) {
-        marca = obj[0].data.marca;
+      if (string.includes("brand")) {
+        brand = obj[0].data.brand;
         key = obj[0].key;
       }
     }
@@ -40,7 +40,7 @@ function DataTable({ listAparelho }) {
           id: key,
           model: model,
           serial: serial,
-          marca: marca,
+          brand: brand,
         }),
       });
     } catch (err) {
@@ -84,7 +84,7 @@ function DataTable({ listAparelho }) {
         <Column dataField={"model"} />
         <Column dataField={"serial"} sortOrder={"asc"} />
 
-        <Column caption={"Marca"} dataField={"marca"} />
+        <Column caption={"Marca"} dataField={"brand"} />
 
         <Pager allowedPageSizes={[5, 10, 20]} showPageSizeSelector={true} />
         <Paging defaultPageSize={10} />
@@ -93,4 +93,4 @@ function DataTable({ listAparelho }) {
   );
 }
 
-export default DataTable;
+export default DataTableEdit;
