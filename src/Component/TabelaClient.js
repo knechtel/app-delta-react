@@ -71,17 +71,17 @@ const onChangesChange = async (changes) => {
   }
 };
 const renderGridCell = (data) => {
-  var b = "https://www.google.com/search?q=sun";
+  var b = "http://localhost:3000/edit/" + data.text;
   return (
-    <a href={data.text} target="_blank" rel="noopener noreferrer">
+    <a href={b} target="_blank" rel="noopener noreferrer">
       {data.text}
     </a>
   );
 };
 function TabelaClient({ list }) {
   for (let key in list) {
-    var name = list[key].name;
-    list[key].website = name;
+    var id = list[key].id;
+    list[key].website = id;
     // console.log(name);
   }
   return (

@@ -4,6 +4,7 @@ import "./index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RegisterOs from "./Component/RegisterOs";
+import EditOsAparelho from "./Component/EditOsAparelho";
 export const TreesContext = createContext({});
 ReactDOM.render(
   <TreesContext.Provider>
@@ -11,6 +12,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/create-os" element={<RegisterOs />} />
         <Route path="/" element={<App />} />
+        <Route path="/edit/:id" element={<EditOsAparelho />} />
       </Routes>
     </BrowserRouter>
   </TreesContext.Provider>,
