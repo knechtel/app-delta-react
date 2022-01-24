@@ -72,11 +72,7 @@ const onChangesChange = async (changes) => {
 };
 const renderGridCell = (data) => {
   var b = "http://localhost:3000/edit/" + data.text;
-  return (
-    <a href={b} target="_blank" rel="noopener noreferrer">
-      {data.text}
-    </a>
-  );
+  return <a href={b}>{data.text}</a>;
 };
 function TabelaClient({ list }) {
   for (let key in list) {
