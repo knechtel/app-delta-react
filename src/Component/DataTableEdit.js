@@ -5,10 +5,26 @@ import DataGrid, {
   Pager,
   Paging,
   Selection,
+  ColumnChooser,
   Editing,
 } from "devextreme-react/data-grid";
-import React from "react";
+import React, { useState } from "react";
+
 function DataTableEdit({ listAparelho }) {
+  const [pronto, setPronto] = useState();
+
+  const renderProntoGridCell = (data) => {
+    var obj = eval(data);
+
+    if (obj.data.pronto == null) {
+      setPronto(false);
+    }
+    return <input type="checkbox" checked={obj.data.pronto} />;
+  };
+  const renderAutorizadoGridCell = (data) => {
+    var obj = eval(data);
+    return <input type="checkbox" checked={obj.data.autorizado} />;
+  };
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
     if (string != "[]") {
@@ -17,8 +33,7 @@ function DataTableEdit({ listAparelho }) {
       var serial = null;
       var brand = null;
       var obj = eval(string);
-      console.log("Begin");
-      console.log(obj);
+
       if (string.includes("model")) {
         model = obj[0].data.model;
         key = obj[0].key;
@@ -93,20 +108,15 @@ function DataTableEdit({ listAparelho }) {
           allowDeleting={true}
         />
         <Column dataField="id" allowEditing={false}></Column>
-        <Column
-          dataField={"idClient"}
-          caption={"Client ID"}
-          allowSorting={false}
-          allowFiltering={false}
-          allowGrouping={false}
-          allowReordering={false}
-          width={100}
-        />
+
+        {/* <ColumnChooser caption={"teste"} width="100" enabled={true} />*/}
         <Column dataField={"model"} />
         <Column dataField={"serial"} sortOrder={"asc"} />
 
         <Column caption={"Marca"} dataField={"brand"} />
 
+        <Column caption={"Pronto"} cellRender={renderProntoGridCell} />
+        <Column caption={"Autorizado"} cellRender={renderAutorizadoGridCell} />
         <Pager allowedPageSizes={[5, 10, 20]} showPageSizeSelector={true} />
         <Paging defaultPageSize={10} />
       </DataGrid>
