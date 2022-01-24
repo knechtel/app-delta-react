@@ -24,14 +24,10 @@ function NavBar() {
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li class="active">
-                <a href="http://ec2-3-137-215-86.us-east-2.compute.amazonaws.com:8080/">
-                  Home
-                </a>
+                <a href="http://localhost:3000/">Home</a>
               </li>
               <li>
-                <a href="https://github.com/micheliknechtel/order-request-manager">
-                  Git Repository
-                </a>
+                <a href="http://localhost:3000/create-os">Create OS</a>
               </li>
               <li>
                 <a href="https://www.linkedin.com/in/micheliknechtel/">
