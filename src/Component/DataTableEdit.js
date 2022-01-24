@@ -1,3 +1,4 @@
+import { Checkbox } from "@material-ui/core";
 import DataGrid, {
   Column,
   FilterRow,
@@ -13,13 +14,30 @@ import React, { useState } from "react";
 function DataTableEdit({ listAparelho }) {
   const [pronto, setPronto] = useState();
 
+  const checkPronto = (ptr, obj) => {
+    console.log("mais um test -> ->" + ptr);
+    ptr = false;
+
+    //    console.log("mais um test -> ->" + o.brand);
+    // setPronto(ptr);
+  };
+
   const renderProntoGridCell = (data) => {
     var obj = eval(data);
+    var prt = obj.data.pronto;
+    var idCheck = obj.data.id;
+    var test = false;
+    console.log("Esse");
+    console.log(obj);
 
-    if (obj.data.pronto == null) {
-      setPronto(false);
-    }
-    return <input type="checkbox" checked={obj.data.pronto} />;
+    return (
+      <input
+        type="checkbox"
+        id={idCheck}
+        checked={prt}
+        onclick={checkPronto(prt, obj)}
+      />
+    );
   };
   const renderAutorizadoGridCell = (data) => {
     var obj = eval(data);
@@ -27,11 +45,14 @@ function DataTableEdit({ listAparelho }) {
   };
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
+    console.log("olhar para cá! ");
+    console.log(string);
     if (string != "[]") {
       var key = null;
       var model = null;
       var serial = null;
       var brand = null;
+      var pronto = null;
       var obj = eval(string);
 
       if (string.includes("model")) {
@@ -44,6 +65,10 @@ function DataTableEdit({ listAparelho }) {
       }
       if (string.includes("brand")) {
         brand = obj[0].data.brand;
+        key = obj[0].key;
+      }
+      if (string.includes("pronto")) {
+        pronto = obj[0].data.pronto;
         key = obj[0].key;
       }
     }
@@ -76,6 +101,7 @@ function DataTableEdit({ listAparelho }) {
             model: model,
             serial: serial,
             brand: brand,
+            pronto: pronto,
           }),
         });
       } catch (err) {
