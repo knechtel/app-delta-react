@@ -17,6 +17,8 @@ function DataTableEdit({ listAparelho }) {
       var serial = null;
       var brand = null;
       var obj = eval(string);
+      console.log("Begin");
+      console.log(obj);
       if (string.includes("model")) {
         model = obj[0].data.model;
         key = obj[0].key;
@@ -30,22 +32,41 @@ function DataTableEdit({ listAparelho }) {
         key = obj[0].key;
       }
     }
-    try {
-      const response = fetch(`http://localhost:8080/update-equipment`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: key,
-          model: model,
-          serial: serial,
-          brand: brand,
-        }),
-      });
-    } catch (err) {
-      throw err;
-      console.log(err);
+    if (string.includes("remove")) {
+      console.log("remove");
+      key = obj[0].key;
+      try {
+        const response = fetch(`http://localhost:8080/delete-equipment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: key,
+          }),
+        });
+      } catch (err) {
+        throw err;
+        console.log(err);
+      }
+    } else {
+      try {
+        const response = fetch(`http://localhost:8080/update-equipment`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: key,
+            model: model,
+            serial: serial,
+            brand: brand,
+          }),
+        });
+      } catch (err) {
+        throw err;
+        console.log(err);
+      }
     }
   };
   return (
