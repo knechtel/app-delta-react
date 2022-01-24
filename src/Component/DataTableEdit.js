@@ -1,4 +1,5 @@
 import { Checkbox } from "@material-ui/core";
+import Form, { Label, SimpleItem } from "devextreme-react/form";
 import DataGrid, {
   Column,
   FilterRow,
@@ -11,37 +12,64 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import React, { useState } from "react";
 
+const checkPronto = (e) => {
+  var obj = eval(e);
+  // var obj = eval(data);
+  console.log("_____do _________");
+  //console.log(obj.row.pronto);
+  // console.log(obj);
+  // console.log("______________");
+  // console.log(obj.data.id);
+  // console.log("_____foi id _________");
+  // obj.data.pronto = !obj.data.pronto;
+  //    console.log("mais um test -> ->" + o.brand);
+  // setPronto(ptr);
+};
 function DataTableEdit({ listAparelho }) {
   const [pronto, setPronto] = useState();
-
-  const checkPronto = (ptr, obj) => {
-    console.log("mais um test -> ->" + ptr);
-    ptr = false;
-
-    //    console.log("mais um test -> ->" + o.brand);
-    // setPronto(ptr);
-  };
+  const [test, setTest] = useState(0);
 
   const renderProntoGridCell = (data) => {
     var obj = eval(data);
-    var prt = obj.data.pronto;
+    obj.data.pronto = true;
+    var test = obj.data.pronto;
     var idCheck = obj.data.id;
-    var test = false;
+
     console.log("Esse");
     console.log(obj);
-
+    const checkPronto = (e) => {
+      var obj = eval(e);
+      var test1 = obj.data.pronto;
+      // var obj = eval(data);
+      console.log("_____do _________");
+      obj.data.pronto = !obj.data.pronto;
+      test = obj.data.pronto;
+      //console.log(obj.row.pronto);
+      // console.log(obj);
+      // console.log("______________");
+      // console.log(obj.data.id);
+      // console.log("_____foi id _________");
+      // obj.data.pronto = !obj.data.pronto;
+      //    console.log("mais um test -> ->" + o.brand);
+      // setPronto(ptr);
+    };
     return (
-      <input
-        type="checkbox"
-        id={idCheck}
-        checked={prt}
-        onclick={checkPronto(prt, obj)}
-      />
+      <>
+        <input type="checkbox" id={idCheck} onClick={(e) => checkPronto(e)} />
+        <br />
+        <input type="checkbox" id={idCheck} checked={test} />
+      </>
     );
   };
   const renderAutorizadoGridCell = (data) => {
     var obj = eval(data);
-    return <input type="checkbox" checked={obj.data.autorizado} />;
+    return (
+      <input
+        type="checkbox"
+        checked={obj.data.autorizado}
+        onChange={checkPronto(data)}
+      />
+    );
   };
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
@@ -113,7 +141,7 @@ function DataTableEdit({ listAparelho }) {
   return (
     <div>
       <DataGrid
-        dataSource={listAparelho}
+        dataSource={[...listAparelho]}
         keyExpr={"id"}
         allowColumnReordering={true}
         onChangesChange={onChangesChange}
