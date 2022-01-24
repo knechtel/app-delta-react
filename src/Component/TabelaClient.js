@@ -9,8 +9,68 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import React from "react";
 
+const onChangesChange = async (changes) => {
+  var string = JSON.stringify(changes);
+  if (string != "[]") {
+    var name = null;
+    var email = null;
+    var cpf = null;
+    var key = null;
+    var obj = eval(string);
+    console.log("ver agora");
+    console.log(obj);
+
+    if (string.includes("remove")) {
+      console.log("remove");
+      key = obj[0].key;
+      try {
+        const response = fetch(`http://localhost:8080/client-delete`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: key,
+          }),
+        });
+      } catch (err) {
+        throw err;
+        console.log(err);
+      }
+    } else {
+      if (string.includes("name")) {
+        name = obj[0].data.name;
+        key = obj[0].key;
+      }
+      if (string.includes("email")) {
+        email = obj[0].data.email;
+        key = obj[0].key;
+      }
+      if (string.includes("cpf")) {
+        cpf = obj[0].data.cpf;
+        key = obj[0].key;
+      }
+      try {
+        const response = fetch(`http://localhost:8080/client-update`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: key,
+            name: name,
+            email: email,
+            cpf: cpf,
+          }),
+        });
+      } catch (err) {
+        throw err;
+        console.log(err);
+      }
+    }
+  }
+};
 const renderGridCell = (data) => {
-  console.log(data);
   var b = "https://www.google.com/search?q=sun";
   return (
     <a href={data.text} target="_blank" rel="noopener noreferrer">
@@ -22,7 +82,7 @@ function TabelaClient({ list }) {
   for (let key in list) {
     var name = list[key].name;
     list[key].website = name;
-    console.log(name);
+    // console.log(name);
   }
   return (
     <div>
@@ -30,7 +90,13 @@ function TabelaClient({ list }) {
         <Grouping autoExpandAll={true} border="1" />
         <FilterRow visible={true} />
         <Selection mode={"multiple"} />
-        <Editing mode="row" allowUpdating={true} allowDeleting={true} />
+        <Editing
+          onChangesChange={onChangesChange}
+          mode="row"
+          allowUpdating={true}
+          allowDeleting={true}
+          confirmDelete={true}
+        />
 
         <Column dataField={"name"} />
         <Column dataField={"email"} />
