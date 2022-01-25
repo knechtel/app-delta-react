@@ -34,7 +34,7 @@ const RegisterOs = () => {
       });
 
       const json = await response.json();
-      console.log("aqui");
+
       console.log(json.id);
       setPostId(json.id);
 
