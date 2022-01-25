@@ -24,7 +24,7 @@ const onChangesChange = async (changes) => {
       console.log("remove");
       key = obj[0].key;
       try {
-        const response = fetch(`http://localhost:8080/client-delete`, {
+        const response = fetch(`http://localhost:8080/delete-client`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +51,7 @@ const onChangesChange = async (changes) => {
         key = obj[0].key;
       }
       try {
-        const response = fetch(`http://localhost:8080/client-update`, {
+        const response = fetch(`http://localhost:8080/update-client`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

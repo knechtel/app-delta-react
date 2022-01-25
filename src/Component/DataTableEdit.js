@@ -98,7 +98,7 @@ function DataTableEdit({ listAparelho }) {
       console.log("remove");
       key = obj[0].key;
       try {
-        const response = fetch(`http://localhost:8080/delete-equipment`, {
+        const response = fetch(`http://localhost:8080/equipment-delete`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -113,7 +113,7 @@ function DataTableEdit({ listAparelho }) {
       }
     } else {
       try {
-        const response = fetch(`http://localhost:8080/update-equipment`, {
+        const response = fetch(`http://localhost:8080/equipment-update`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
