@@ -7,6 +7,7 @@ import DataGrid, {
   Selection,
   Editing,
 } from "devextreme-react/data-grid";
+import { DELETE_CLIENT, UPDATE_CLIENT } from "./urls";
 import React from "react";
 
 const onChangesChange = async (changes) => {
@@ -24,7 +25,7 @@ const onChangesChange = async (changes) => {
       console.log("remove");
       key = obj[0].key;
       try {
-        const response = fetch(`http://localhost:8080/delete-client`, {
+        const response = fetch(DELETE_CLIENT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,7 +52,7 @@ const onChangesChange = async (changes) => {
         key = obj[0].key;
       }
       try {
-        const response = fetch(`http://localhost:8080/update-client`, {
+        const response = fetch(UPDATE_CLIENT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
