@@ -16,14 +16,8 @@ const checkPronto = (e) => {
   var obj = eval(e);
   // var obj = eval(data);
   console.log("_____do _________");
-  //console.log(obj.row.pronto);
-  // console.log(obj);
-  // console.log("______________");
-  // console.log(obj.data.id);
-  // console.log("_____foi id _________");
-  // obj.data.pronto = !obj.data.pronto;
-  //    console.log("mais um test -> ->" + o.brand);
-  // setPronto(ptr);
+  console.log(obj);
+  console.log("end_____do _________");
 };
 function DataTableEdit({ listAparelho }) {
   const [pronto, setPronto] = useState();
@@ -37,27 +31,27 @@ function DataTableEdit({ listAparelho }) {
 
     console.log("Esse");
     console.log(obj);
-    const checkPronto = (e) => {
-      var obj = eval(e);
-      var test1 = obj.data.pronto;
-      // var obj = eval(data);
-      console.log("_____do _________");
-      obj.data.pronto = !obj.data.pronto;
-      test = obj.data.pronto;
-      //console.log(obj.row.pronto);
-      // console.log(obj);
-      // console.log("______________");
-      // console.log(obj.data.id);
-      // console.log("_____foi id _________");
-      // obj.data.pronto = !obj.data.pronto;
-      //    console.log("mais um test -> ->" + o.brand);
-      // setPronto(ptr);
-    };
+
     return (
       <>
-        <input type="checkbox" id={idCheck} onClick={(e) => checkPronto(e)} />
-        <br />
-        <input type="checkbox" id={idCheck} checked={test} />
+        <table>
+          <tr>
+            <td>
+              <input
+                type="checkbox"
+                id={idCheck}
+                onClick={(e) => checkPronto(e)}
+              />
+            </td>
+            <td>Pronto</td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" id={idCheck} checked={test} />
+            </td>
+            <td>Pendente</td>
+          </tr>
+        </table>
       </>
     );
   };
