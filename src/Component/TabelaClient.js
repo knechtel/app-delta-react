@@ -7,7 +7,7 @@ import DataGrid, {
   Selection,
   Editing,
 } from "devextreme-react/data-grid";
-import { DELETE_CLIENT, UPDATE_CLIENT } from "./urls";
+import { DELETE_CLIENT, EDIT_CLIENT_URL, UPDATE_CLIENT } from "./urls";
 import React from "react";
 
 const onChangesChange = async (changes) => {
@@ -18,7 +18,6 @@ const onChangesChange = async (changes) => {
     var cpf = null;
     var key = null;
     var obj = eval(string);
-    console.log("ver agora");
     console.log(obj);
 
     if (string.includes("remove")) {
@@ -39,15 +38,15 @@ const onChangesChange = async (changes) => {
         console.log(err);
       }
     } else {
-      if (string.includes("name")) {
+      if (string.includes(NAME)) {
         name = obj[0].data.name;
         key = obj[0].key;
       }
-      if (string.includes("email")) {
+      if (string.includes(EMAIL)) {
         email = obj[0].data.email;
         key = obj[0].key;
       }
-      if (string.includes("cpf")) {
+      if (string.includes(CPF)) {
         cpf = obj[0].data.cpf;
         key = obj[0].key;
       }
@@ -72,7 +71,7 @@ const onChangesChange = async (changes) => {
   }
 };
 const renderGridCell = (data) => {
-  var b = "http://localhost:3000/edit/" + data.text;
+  var b = EDIT_CLIENT_URL + data.text;
   return <a href={b}>{data.text}</a>;
 };
 function TabelaClient({ list }) {
@@ -114,4 +113,7 @@ function TabelaClient({ list }) {
   );
 }
 
+const NAME = "name";
+const EMAIL = "email";
+const CPF = "pf";
 export default TabelaClient;

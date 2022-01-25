@@ -6,3 +6,4 @@ export const DELETE_CLIENT = `http://localhost:8080/client-delete`;
 export const DELETE_EQUIPMENT = `http://localhost:8080/equipment-delete`;
 export const UPDATE_CLIENT = `http://localhost:8080/client-update`;
 export const UPDATE_EQUIPMENT = `http://localhost:8080/update-equipment`;
+export const EDIT_CLIENT_URL = "http://localhost:3000/edit/";
