@@ -1,5 +1,3 @@
-import { Checkbox } from "@material-ui/core";
-import Form, { Label, SimpleItem } from "devextreme-react/form";
 import DataGrid, {
   Column,
   FilterRow,
@@ -7,7 +5,6 @@ import DataGrid, {
   Pager,
   Paging,
   Selection,
-  ColumnChooser,
   Editing,
 } from "devextreme-react/data-grid";
 import React, { useState } from "react";
@@ -73,19 +70,19 @@ function DataTableEdit({ listAparelho }) {
       var pronto = null;
       var obj = eval(string);
 
-      if (string.includes("model")) {
+      if (string.includes(MODEL)) {
         model = obj[0].data.model;
         key = obj[0].key;
       }
-      if (string.includes("serial")) {
+      if (string.includes(SERIAL)) {
         serial = obj[0].data.serial;
         key = obj[0].key;
       }
-      if (string.includes("brand")) {
+      if (string.includes(BRAND)) {
         brand = obj[0].data.brand;
         key = obj[0].key;
       }
-      if (string.includes("pronto")) {
+      if (string.includes(PRONTO)) {
         pronto = obj[0].data.pronto;
         key = obj[0].key;
       }
@@ -166,5 +163,9 @@ function DataTableEdit({ listAparelho }) {
     </div>
   );
 }
+const MODEL = "model";
+const SERIAL = "serial";
+const BRAND = "brand";
+const PRONTO = "pronto";
 
 export default DataTableEdit;
