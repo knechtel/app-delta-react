@@ -11,6 +11,7 @@ import DataGrid, {
   Editing,
 } from "devextreme-react/data-grid";
 import React, { useState } from "react";
+import { UPDATE_EQUIPMENT, DELETE_EQUIPMENT } from "./urls";
 
 const checkPronto = (e) => {
   var obj = eval(e);
@@ -98,7 +99,7 @@ function DataTableEdit({ listAparelho }) {
       console.log("remove");
       key = obj[0].key;
       try {
-        const response = fetch(`http://localhost:8080/equipment-delete`, {
+        const response = fetch(DELETE_EQUIPMENT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -113,7 +114,7 @@ function DataTableEdit({ listAparelho }) {
       }
     } else {
       try {
-        const response = fetch(`http://localhost:8080/equipment-update`, {
+        const response = fetch(UPDATE_EQUIPMENT, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

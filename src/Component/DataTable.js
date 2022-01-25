@@ -8,6 +8,7 @@ import DataGrid, {
   Editing,
 } from "devextreme-react/data-grid";
 import React from "react";
+import { UPDATE_EQUIPMENT } from "./urls";
 function DataTable({ listAparelho }) {
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
@@ -31,7 +32,7 @@ function DataTable({ listAparelho }) {
       }
     }
     try {
-      const response = fetch(`http://localhost:8080/update-equipment`, {
+      const response = fetch(UPDATE_EQUIPMENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
