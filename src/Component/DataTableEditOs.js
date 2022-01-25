@@ -15,10 +15,6 @@ import { UPDATE_EQUIPMENT, DELETE_EQUIPMENT } from "./urls";
 
 const checkPronto = (e) => {
   var obj = eval(e);
-  // var obj = eval(data);
-  console.log("_____do _________");
-  console.log(obj);
-  console.log("end_____do _________");
 };
 function DataTableEdit({ listAparelho }) {
   const [pronto, setPronto] = useState();
@@ -68,7 +64,6 @@ function DataTableEdit({ listAparelho }) {
   };
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
-    console.log("olhar para cá! ");
     console.log(string);
     if (string != "[]") {
       var key = null;
@@ -96,7 +91,6 @@ function DataTableEdit({ listAparelho }) {
       }
     }
     if (string.includes("remove")) {
-      console.log("remove");
       key = obj[0].key;
       try {
         const response = fetch(DELETE_EQUIPMENT, {
