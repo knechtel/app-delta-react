@@ -64,8 +64,7 @@ const EditOsAparelho = () => {
       });
 
       const json = await response.json();
-      console.log("findByAllEquipment");
-      console.log(json.listEquipment);
+
       setNewList(json.listEquipment);
     } catch (err) {
       throw err;
@@ -89,9 +88,7 @@ const EditOsAparelho = () => {
   );
   const [postId, setPostId] = useState(2);
 
-  useEffect(() => {
-    console.log("mudou");
-  }, []);
+  useEffect(() => {}, []);
 
   var id = 0;
 
@@ -110,7 +107,7 @@ const EditOsAparelho = () => {
       });
 
       const json = await response.json();
-      console.log("aqui");
+
       console.log(json.id);
       setPostId(json.id);
 
