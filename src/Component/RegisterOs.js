@@ -1,6 +1,6 @@
 import NavBar from "./NavBar";
 import React, { useState } from "react";
-import DataTable from "./DataTable";
+import DataTableCreateClient from "./DataTableRegistraOs";
 import { CREATE_CLIENT, CREATE_EQUIPMENT } from "./urls";
 const RegisterOs = () => {
   const [showClientMessage, setShowClientMessage] = useState(false);
@@ -223,7 +223,7 @@ const RegisterOs = () => {
           </table>
         </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable listAparelho={[...equipmentList]} />
+        <DataTableCreateClient listAparelho={[...equipmentList]} />
       </div>
     </>
   );

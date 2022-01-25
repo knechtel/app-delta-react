@@ -7,7 +7,7 @@ import {
   FIND_ALL_EQUIPMENT_BY_CLIENT,
 } from "./urls";
 import { useParams } from "react-router-dom";
-import DataTableEdit from "./DataTableEdit";
+import DataTableEditOs from "./DataTableEditOs";
 
 const EditOsAparelho = () => {
   const [client, setClient] = useState([]);
@@ -250,7 +250,7 @@ const EditOsAparelho = () => {
         <div></div>
 
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTableEdit listAparelho={[...newList]} />
+        <DataTableEditOs listAparelho={[...newList]} />
       </div>
     </>
   );

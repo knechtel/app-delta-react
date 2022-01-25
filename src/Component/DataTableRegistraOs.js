@@ -10,7 +10,7 @@ import DataGrid, {
 import React from "react";
 import { UPDATE_EQUIPMENT } from "./urls";
 
-function DataTable({ listAparelho }) {
+function DataTableRegistraOS({ listAparelho }) {
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
     if (string != "[]") {
@@ -99,4 +99,4 @@ function DataTable({ listAparelho }) {
   const MARCA = "marca";
 }
 
-export default DataTable;
+export default DataTableRegistraOS;
