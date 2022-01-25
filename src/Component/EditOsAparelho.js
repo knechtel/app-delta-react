@@ -133,7 +133,7 @@ const EditOsAparelho = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:8080/create-equipment`, {
+      const response = await fetch(`http://localhost:8080/equipment-create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

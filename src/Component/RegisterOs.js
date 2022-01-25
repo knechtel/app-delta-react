@@ -13,24 +13,13 @@ const RegisterOs = () => {
   var [modelo, setModelo] = useState("");
   var [serial, setSerial] = useState("");
   var [defeito, setDefeito] = useState("");
-  const [newList, setNewList] = useState([]);
-
-  var [listEquipment, setListEquipement] = useReducer(
-    (listEquipment, newList) => {
-      listEquipment = newList;
-      setNewList(newList);
-      return newList;
-    }
-  );
+  const [equipmentList, setEquipmentList] = useState([]);
+  var listEquipment; //remover
   const [postId, setPostId] = useState(2);
-
-  useEffect(() => {
-    console.log("mudou");
-  }, [listEquipment]);
 
   var id = 0;
 
-  async function fetchFunction() {
+  async function clientCreate() {
     try {
       const response = await fetch(`http://localhost:8080/client-create`, {
         method: "POST",
@@ -60,12 +49,12 @@ const RegisterOs = () => {
   async function submitHandler(e) {
     setMostra(true);
     e.preventDefault();
-    await fetchFunction();
+    await clientCreate();
     setPostId(id);
     await delay(2000);
     setMostra(false);
   }
-  async function submitHandlerEquipment(e) {
+  async function equipmentCreate(e) {
     e.preventDefault();
 
     try {
@@ -96,7 +85,7 @@ const RegisterOs = () => {
       };
       if (listEquipment == null) listEquipment = new Array();
       listEquipment.push(apaerelho1);
-      setListEquipement(listEquipment);
+      setEquipmentList(listEquipment);
       setShowAparelho(true);
       setMarca("");
       setModelo("");
@@ -184,7 +173,7 @@ const RegisterOs = () => {
           </table>
         </form>
         <div></div>
-        <form onSubmit={submitHandlerEquipment}>
+        <form onSubmit={equipmentCreate}>
           <h2 style={styleH1}>Aparelho </h2>
           <table style={mystyle}>
             <tr>
@@ -234,7 +223,7 @@ const RegisterOs = () => {
           </table>
         </form>
         <h3 style={styleH1}>Aparelhos com mesma os</h3>
-        <DataTable listAparelho={[...newList]} />
+        <DataTable listAparelho={[...equipmentList]} />
       </div>
     </>
   );
