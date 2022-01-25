@@ -4,7 +4,7 @@ import DataTable from "./DataTable";
 
 const RegisterOs = () => {
   const [showClientMessage, setShowClientMessage] = useState(false);
-  const [showAparelho, setShowAparelho] = useState(false);
+  const [showEquipmentMessage, setShowEquipmentMessage] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [cpf, setCpf] = useState("");
@@ -86,7 +86,7 @@ const RegisterOs = () => {
       if (listEquipment == null) listEquipment = new Array();
       listEquipment.push(apaerelho1);
       setEquipmentList(listEquipment);
-      setShowAparelho(true);
+      setShowEquipmentMessage(true);
       setMarca("");
       setModelo("");
       setSerial("");
@@ -100,7 +100,7 @@ const RegisterOs = () => {
       console.log(err);
     }
     await delay(1000);
-    setShowAparelho(false);
+    setShowEquipmentMessage(false);
   }
   const mystyle = {
     alignItems: "center",
@@ -126,7 +126,7 @@ const RegisterOs = () => {
             Cliente cadastrado com sucesso!
           </p>
         )}
-        {showAparelho && (
+        {showEquipmentMessage && (
           <p className="alert alert-success visible" data-fragment-index="0">
             Aparelho cadastrado com sucesso!
           </p>
