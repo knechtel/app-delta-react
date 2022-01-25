@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import React, { useState } from "react";
 import DataTable from "./DataTable";
-
+import { CREATE_CLIENT, CREATE_EQUIPMENT } from "./urls";
 const RegisterOs = () => {
   const [showClientMessage, setShowClientMessage] = useState(false);
   const [showEquipmentMessage, setShowEquipmentMessage] = useState(false);
@@ -21,7 +21,7 @@ const RegisterOs = () => {
 
   async function clientCreate() {
     try {
-      const response = await fetch(`http://localhost:8080/client-create`, {
+      const response = await fetch(CREATE_CLIENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -58,7 +58,7 @@ const RegisterOs = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:8080/equipment-create`, {
+      const response = await fetch(CREATE_EQUIPMENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
