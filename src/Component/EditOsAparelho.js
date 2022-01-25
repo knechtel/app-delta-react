@@ -76,7 +76,6 @@ const EditOsAparelho = () => {
   };
 
   useEffect(() => {
-    console.log("chama");
     findByIdClient(params.id);
     findClientByEquipment(params.id);
     console.log(params.id);
