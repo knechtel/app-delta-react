@@ -1,0 +1,4 @@
+export const CREATE_CLIENT = `http://localhost:8080/client-create`;
+export const CLIENT_FIND_BY_ID = `http://localhost:8080/client-findById`;
+export const FIND_ALL_EQUIPMENT_BY_CLIENT = `http://localhost:8080/client-findByAllEquipment`;
+export const CREATE_EQUIPMENT = `http://localhost:8080/equipment-create`;

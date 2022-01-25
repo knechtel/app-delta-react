@@ -1,6 +1,11 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
-import DataTable from "./DataTable";
+import {
+  CLIENT_FIND_BY_ID,
+  CREATE_CLIENT,
+  CREATE_EQUIPMENT,
+  FIND_ALL_EQUIPMENT_BY_CLIENT,
+} from "./urls";
 import { useParams } from "react-router-dom";
 import DataTableEdit from "./DataTableEdit";
 
@@ -22,7 +27,7 @@ const EditOsAparelho = () => {
 
   const findByIdClient = async (id) => {
     try {
-      const response = await fetch(`http://localhost:8080/client-findById`, {
+      const response = await fetch(CLIENT_FIND_BY_ID, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,18 +53,15 @@ const EditOsAparelho = () => {
 
   const findClientByEquipment = async (id) => {
     try {
-      const response = await fetch(
-        `http://localhost:8080/client-findByAllEquipment`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            id: id,
-          }),
-        }
-      );
+      const response = await fetch(FIND_ALL_EQUIPMENT_BY_CLIENT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: id,
+        }),
+      });
 
       const json = await response.json();
       console.log("findByAllEquipment");
@@ -96,7 +98,7 @@ const EditOsAparelho = () => {
 
   async function fetchFunction() {
     try {
-      const response = await fetch(`http://localhost:8080/client-create`, {
+      const response = await fetch(CREATE_CLIENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +135,7 @@ const EditOsAparelho = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:8080/equipment-create`, {
+      const response = await fetch(CREATE_EQUIPMENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
