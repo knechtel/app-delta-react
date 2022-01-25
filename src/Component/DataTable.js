@@ -9,6 +9,7 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import React from "react";
 import { UPDATE_EQUIPMENT } from "./urls";
+
 function DataTable({ listAparelho }) {
   const onChangesChange = async (changes) => {
     var string = JSON.stringify(changes);
@@ -18,15 +19,16 @@ function DataTable({ listAparelho }) {
       var serial = null;
       var marca = null;
       var obj = eval(string);
-      if (string.includes("model")) {
+
+      if (string.includes(MODEL)) {
         model = obj[0].data.model;
         key = obj[0].key;
       }
-      if (string.includes("serial")) {
+      if (string.includes(SERIAL)) {
         serial = obj[0].data.serial;
         key = obj[0].key;
       }
-      if (string.includes("marca")) {
+      if (string.includes(MARCA)) {
         marca = obj[0].data.marca;
         key = obj[0].key;
       }
@@ -49,6 +51,7 @@ function DataTable({ listAparelho }) {
       console.log(err);
     }
   };
+
   return (
     <div>
       <DataGrid
@@ -58,9 +61,6 @@ function DataTable({ listAparelho }) {
         onChangesChange={onChangesChange}
         onSelectionChanged={(newSelection) => {
           console.log(newSelection.rows);
-          console.log("passou aqui");
-          // **** The following line breaks the page upon selection ****
-          // currentlySelected(newSelection)
         }}
       >
         <Grouping autoExpandAll={true} border="1" />
@@ -92,6 +92,11 @@ function DataTable({ listAparelho }) {
       </DataGrid>
     </div>
   );
+
+  // eslint-disable-next-line no-unreachable
+  const MODEL = "model";
+  const SERIAL = "serial";
+  const MARCA = "marca";
 }
 
 export default DataTable;

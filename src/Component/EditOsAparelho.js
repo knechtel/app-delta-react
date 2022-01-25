@@ -1,7 +1,7 @@
 import NavBar from "./NavBar";
 import React, { useState, useEffect, useReducer } from "react";
 import {
-  CLIENT_FIND_BY_ID,
+  FIND_BY_ID_CLIENT,
   CREATE_CLIENT,
   CREATE_EQUIPMENT,
   FIND_ALL_EQUIPMENT_BY_CLIENT,
@@ -27,7 +27,7 @@ const EditOsAparelho = () => {
 
   const findByIdClient = async (id) => {
     try {
-      const response = await fetch(CLIENT_FIND_BY_ID, {
+      const response = await fetch(FIND_BY_ID_CLIENT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
