@@ -1,9 +1,9 @@
 import NavBar from "./NavBar";
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useState } from "react";
 import DataTable from "./DataTable";
 
 const RegisterOs = () => {
-  const [mostra, setMostra] = useState(false);
+  const [showClientMessage, setShowClientMessage] = useState(false);
   const [showAparelho, setShowAparelho] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -47,12 +47,12 @@ const RegisterOs = () => {
 
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
   async function submitHandler(e) {
-    setMostra(true);
+    setShowClientMessage(true);
     e.preventDefault();
     await clientCreate();
     setPostId(id);
     await delay(2000);
-    setMostra(false);
+    setShowClientMessage(false);
   }
   async function equipmentCreate(e) {
     e.preventDefault();
@@ -121,7 +121,7 @@ const RegisterOs = () => {
     <>
       <NavBar />
       <div>
-        {mostra && (
+        {showClientMessage && (
           <p className="alert alert-success visible" data-fragment-index="0">
             Cliente cadastrado com sucesso!
           </p>
