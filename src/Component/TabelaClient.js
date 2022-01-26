@@ -113,5 +113,5 @@ function TabelaClient({ list }) {
 
 const NAME = "name";
 const EMAIL = "email";
-const CPF = "pf";
+const CPF = "cpf";
 export default TabelaClient;
