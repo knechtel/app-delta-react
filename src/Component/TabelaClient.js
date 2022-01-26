@@ -38,17 +38,15 @@ const onChangesChange = async (changes) => {
         console.log(err);
       }
     } else {
+      key = obj[0].key;
       if (string.includes(NAME)) {
         name = obj[0].data.name;
-        key = obj[0].key;
       }
       if (string.includes(EMAIL)) {
         email = obj[0].data.email;
-        key = obj[0].key;
       }
       if (string.includes(CPF)) {
         cpf = obj[0].data.cpf;
-        key = obj[0].key;
       }
       try {
         const response = fetch(UPDATE_CLIENT, {
