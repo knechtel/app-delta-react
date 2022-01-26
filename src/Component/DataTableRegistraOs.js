@@ -20,17 +20,15 @@ function DataTableRegistraOS({ listAparelho }) {
       var marca = null;
       var obj = eval(string);
 
+      key = obj[0].key;
       if (string.includes(MODEL)) {
         model = obj[0].data.model;
-        key = obj[0].key;
       }
       if (string.includes(SERIAL)) {
         serial = obj[0].data.serial;
-        key = obj[0].key;
       }
       if (string.includes(MARCA)) {
         marca = obj[0].data.marca;
-        key = obj[0].key;
       }
     }
     try {
